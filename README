@@ -1,0 +1,12 @@
+README
+GitLab Web Hooks可以使我们的GIT项目自动部署，无须手工进行重复的git pull操作
+
+使用方式：
+1、第一次使用时，须要手工进行git clone项目,不要使用自己的账户进行clone,支持使用Deploy keys。
+   Deploy Keys 与具体操作人无关，该Key为机器的SSH的公钥，该key只允许机器对项目进行访问操作。
+2、在GitLab上配置对应web路径，使GITLAB可以通过POST方式来与web hooks进行通信
+3、PHP-FPM运行用户须要有执行shell权限，最好启用一个新的FPM实例
+
+说明：
+1、对外提供了配置文件config.php，以后需要修复某个变更项，最好使其成为一个配置项
+2、目前需要对MERGE REQUEST的事件进行解析，主要是由于当前公司的GITLAB为7.0版本，无法创建一个MERGE REQUEST的同时通知到组内全部成员，在7.12版本后可以通过approvers来完成这个操作
